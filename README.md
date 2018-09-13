@@ -12,7 +12,7 @@ BusterzBot also comes with an API for the '*API DoS*' function, this API only wo
 
 #### How to run
 1. Install PHP.
-2. Linux: `php path/to/bot.php`
+2. Linux: `php path/to/bot.php`\n
    Windows: `C:\php\php.exe path/to/bot.php`
 3. That's it, easy, right?
 
