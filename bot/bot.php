@@ -5,14 +5,14 @@
  */
 
 //config
-$s = 'chat.freenode.net'; 									//server
-$p = 6667; 													//port
-$n = 'BusterzBot'; 											//Nickname
-$i = 'buszbot';												//ident
+$s = 'chat.freenode.net'; 					//server
+$p = 6667; 							//port
+$n = 'BusterzBot'; 						//Nickname
+$i = 'buszbot';							//ident
 $g = 'BusterzBot (https://github.com/lulzamp/BusterzBot)';	//gecos
-$api_domain = 'busterzbot.cf';								//api domain for @apidos (can be a subdomain too)
-$chans = array(												//channels
-	'#busterzbot-test'
+$api_domain = 'apidoma.in';					//api domain for @apidos (can be a subdomain too)
+$chans = array(							//channels
+	'#randomchan'
 );
 
 //connection
@@ -44,9 +44,10 @@ while(is_resource($sock)){
 		fwrite($sock, 'PONG '.$d[1]."\r\n");
 	}
 	
-	//join specified channels
 	if($d[1] === '376' || $d[1] === '422'){
-		fwrite($sock, 'JOIN '.$c."\r\n");
+		foreach($chans as $c){
+			fwrite($sock, 'JOIN '.$c."\r\n");
+		}
 	}
 	
 	//add your own commands
