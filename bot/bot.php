@@ -182,7 +182,7 @@ while(is_resource($sock)){
 			fwrite($sock, 'PRIVMSG '.$d[2].' :</BusterzBot Help>'."\r\n");
 			fwrite($sock, 'PRIVMSG '.$d[2].' :idle.'."\r\n");
 		}else{
-			if(!in_array($apidos[2], $m)){
+			if(!in_array($apidos[1], $m)){
 				fwrite($sock, "PRIVMSG $d[2] :Error: invalid method; $apidos[1]\r\n");
 				$error++;
 			}
