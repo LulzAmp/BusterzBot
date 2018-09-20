@@ -8,7 +8,7 @@
 $s = 'chat.freenode.net'; 					//server
 $p = 6667; 							//port
 $n = 'BusterzBott_'; 						//Nickname
-$i = 'buszbot';						//ident
+$i = 'buszbott_';						//ident
 $g = 'BusterzBot (https://github.com/lulzamp/BusterzBot)';	//gecos
 $api_domain = 'apidoma.in';					//api domain for @apidos (can be a subdomain too)
 $chans = array(						//channels
